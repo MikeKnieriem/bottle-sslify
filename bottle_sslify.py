@@ -19,9 +19,11 @@ class SSLify(object):
   def https_redirect(self):
     '''Redirect incoming HTTPS requests to HTTPS'''
 
-    if not request.get_header('X-Forwarded-Proto', 'http') == 'https':
-      if request.url.startswith('http://'):
+    forwarded_protocol = request.get_header('X-Forwarded-Proto', '').lower()
+    request_url = request.url.lower()
+
+    if forwarded_protocol != 'https' and request_url.startswith('http://'):
         url = request.url.replace('http://', 'https://', 1)
         code = 301 if self.permanent else 302
 
-      redirect(url, code=code)
+        redirect(url, code=code)
