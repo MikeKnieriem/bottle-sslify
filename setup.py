@@ -24,13 +24,13 @@ try:
   except ImportError:
     readme = open('README.md').read()
 except:
-  print 'something went wrong reading the README.md file.'
+  print('something went wrong reading the README.md file.')
   readme = ''
 
 setup(
   name='Bottle-SSLify',
   version=metadata['version'],
-  url='https://github.com/ali01/bottle-sslify',
+  url='https://github.com/MikeKnieriem/bottle-sslify',
   license='MIT License',
   author=metadata['author'],
   author_email=metadata['email'],
